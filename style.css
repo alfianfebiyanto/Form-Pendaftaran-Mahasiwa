@@ -1,0 +1,52 @@
+/* Reset & Base Setup */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: #f4f7f6; color: #333; padding: 20px 10px; }
+
+.container { max-width: 1200px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 20px; color: #2c3e50; }
+
+.card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+
+/* Form Styles */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9em; }
+input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 1em; }
+fieldset { border: 1px solid #ddd; padding: 15px; border-radius: 4px; margin-bottom: 15px; }
+legend { font-weight: bold; padding: 0 5px; color: #2c3e50; }
+
+.row-group { display: grid; gap: 15px; grid-template-columns: 1fr; }
+
+/* Buttons */
+.action-buttons { display: flex; gap: 10px; }
+.btn { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; color: white; transition: 0.3s; }
+.btn-primary { background-color: #3498db; flex: 1; }
+.btn-secondary { background-color: #95a5a6; }
+.btn-success { background-color: #2ecc71; }
+
+/* Table Styles */
+.header-laporan { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.table-responsive { width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9em; }
+th { background-color: #f8f9fa; color: #2c3e50; }
+
+/* Summary */
+.summary { margin-top: 20px; padding-top: 15px; border-top: 2px dashed #ddd; font-weight: bold; }
+
+@media (min-width: 768px) {
+    .row-group { grid-template-columns: 1fr 1fr; }
+    fieldset .row-group { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* MODAL STYLES */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.hidden { display: none; }
+.modal-card { background: white; padding: 25px; border-radius: 8px; width: 90%; max-width: 400px; }
+.review-content p { display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding: 5px 0; }
+
+/* --- OPTIMASI PDF (CRITICAL) --- */
+.pdf-mode { padding: 10px !important; }
+.pdf-mode table { min-width: 100% !important; border: 0.5pt solid #000; }
+.pdf-mode th, .pdf-mode td { font-size: 7.5pt !important; padding: 4px !important; border: 0.1pt solid #ccc !important; }
+.pdf-mode .btn, .pdf-mode .header-laporan button { display: none !important; }
+.pdf-mode .summary { font-size: 8pt !important; }

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pendaftaran Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Input Pendaftaran Mahasiswa Baru</h2>
+        </header>
+
+        <form id="formPendaftaran" class="card">
+            <div class="form-group">
+                <label>Kode Pendaftaran</label>
+                <input type="text" id="kode" placeholder="Contoh: A2-101-9" required>
+            </div>
+            <div class="form-group">
+                <label>Nama Pendaftar</label>
+                <input type="text" id="nama" required>
+            </div>
+            <div class="form-group row-group">
+                <div>
+                    <label>Jenis Kelamin</label>
+                    <select id="jk" required>
+                        <option value="">Pilih...</option>
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Tempat, Tanggal Lahir</label>
+                    <input type="text" id="ttl" placeholder="Jakarta, 01-01-2005" required>
+                </div>
+            </div>
+            <div class="form-group row-group">
+                <div>
+                    <label>Asal Sekolah</label>
+                    <input type="text" id="sekolah" required>
+                </div>
+                <div>
+                    <label>Pekerjaan Ortu</label>
+                    <input type="text" id="pekerjaanOrtu" required>
+                </div>
+            </div>
+
+            <fieldset>
+                <legend>Nilai Tes (0 - 100)</legend>
+                <div class="form-group row-group">
+                    <div>
+                        <label>Matematika</label>
+                        <input type="number" id="nilaiMat" min="0" max="100" required>
+                    </div>
+                    <div>
+                        <label>Bhs Inggris</label>
+                        <input type="number" id="nilaiIng" min="0" max="100" required>
+                    </div>
+                    <div>
+                        <label>Pel. Umum</label>
+                        <input type="number" id="nilaiUmum" min="0" max="100" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="action-buttons">
+                <button type="submit" class="btn btn-primary">Save Data</button>
+                <button type="reset" class="btn btn-secondary">Reset Form</button>
+            </div>
+        </form>
+
+        <div id="areaLaporan" class="card">
+            <!-- <div class="header-laporan">
+                <h3>Tabel Data Pendaftaran</h3>
+                <button id="btnDownloadPdf" class="btn btn-success">Download PDF</button>
+            </div> -->
+            
+            <div class="table-responsive">
+                <table id="tabelData">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Nama</th>
+                            <th>JK</th>
+                            <th>TTL</th>
+                            <th>Asal Sekolah</th>
+                            <th>Pekerjaan Ortu</th>
+                            <th>Gedung</th>
+                            <th>MAT</th>
+                            <th>INGG</th>
+                            <th>UMUM</th>
+                            <th>Rata-rata</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyData">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="summary">
+                <p>Jumlah Pendaftar: <span id="sumTotal">0</span></p>
+                <p>Jumlah Peserta Lulus: <span id="sumLulus">0</span></p>
+                <p>Jumlah Peserta Tidak Lulus: <span id="sumTidakLulus">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay untuk Review Data -->
+    <div id="modalReview" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h3>Review Data Pendaftaran</h3>
+            <div id="reviewContent" class="review-content">
+                <!-- Data akan dimasukkan oleh JS di sini -->
+            </div>
+            <div class="modal-actions">
+                <button id="btnCancelSave" class="btn btn-secondary">Batal</button>
+                <button id="btnConfirmSave" class="btn btn-primary">Simpan Data</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Alert untuk Peringatan Duplikat -->
+    <div id="modalAlert" class="modal-overlay hidden">
+        <div class="modal-card" style="max-width: 380px; text-align: center;">
+            <h3 style="color: #e74c3c; border-bottom: none; margin-bottom: 10px;">Pemberitahuan</h3>
+            <div class="review-content" style="margin-bottom: 25px;">
+                <p id="alertMessage" style="display: block; border: none; color: #555; line-height: 1.5; text-align: center; font-size: 1.05em;"></p>
+            </div>
+            <div class="modal-actions" style="justify-content: center;">
+                <button id="btnTutupAlert" class="btn btn-secondary">Mengerti</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
